@@ -1,5 +1,5 @@
 # Shopping
-
+[![Build Status](https://travis-ci.org/chaopli/shopping.svg?branch=master)](https://travis-ci.org/chaopli/shopping)
 ## Prerequisite
 
 ### Django
