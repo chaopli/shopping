@@ -1,0 +1,3 @@
+django
+elasticsearch_dsl
+elasticsearch
