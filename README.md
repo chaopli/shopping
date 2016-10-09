@@ -8,17 +8,15 @@ This demo uses the Django web framework. It can be installed simply with `pip in
 ### Elasticsearch
 This demo uses the Elasticsearch as the searching engine for data queries. To install Elasticsearch, one can simply run
 `curl -L -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.0/elasticsearch-2.4.0.tar.gz`
-command, and then extract the files with `tar -xf elasticsearch-2.4.-.tar.gz` command.
+command, and then extract the files with `tar -xf elasticsearch-2.4.0.tar.gz` command.
 ### Dependent python packages
 - elasticsearch\_dsl
 - elasticsearch
 
 
 ## Index data entries
-In this demo, I use the electronic product dataset in
-[SamTube405/Amazon-E-commerce-Data-set](https://github.com/SamTube405/Amazon-E-commerce-Data-set). To index the entries
-into Elasticsearch, one can run the script in dataindexer, which will kill previous elasticsearch instance and then
-parse the file within the same directory and index the entries into elasticsearch.
+In this demo, I use the laptop data set from Walmart Lab ecommerce product api. This data will be fetched from Walmart Lab api if this 
+project is started as the first time.
 
 ## Run the demo
 After the data got indexed in elasticsearch, we can start the django server by running `python manage.py runserver`
