@@ -11,7 +11,7 @@ es = None
 def start_elastic_search():
     global es
     call('pkill -9 -f elasticsearch'.split())
-    call('elasticsearch -d'.split())
+    call('../elasticsearch/bin/elasticsearch -d'.split())
     time.sleep(10)
     es = Elasticsearch(hosts=[{'host': 'localhost', 'port': 9200}])
 

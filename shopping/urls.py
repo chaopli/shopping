@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from dataindexer import get_data_ready
 
 urlpatterns = [
     url(r'shop', include('frontend.urls')),
     url(r'^admin/', admin.site.urls),
 ]
+
+get_data_ready()

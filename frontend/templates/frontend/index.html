@@ -54,10 +54,15 @@
                     <a href="#">Contact</a>
                 </li>
             </ul>
+            <form class="navbar-form navbar-left", action="/shop">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" name="search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
         </div>
         <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
 </nav>
 
 <!-- Page Content -->
@@ -66,27 +71,39 @@
     <div class="row">
 
         <div class="col-md-3">
-            <p class="lead">Brands</p>
+            <p class="lead">Prices</p>
             <div class="list-group">
-                {% for brand in brands %}
-                <a href="?page={{1}}&brand={{brand}}" class="list-group-item">{{brand}}</a>
+                {% for price_range in price_ranges %}
+                <a href="?page={{1}}&price={{price_range}}&search={{sk}}" class="list-group-item">{{price_range}}</a>
                 {% endfor %}
             </div>
         </div>
 
         <div class="col-md-9">
-
-            <div class="row">
-
+            <div class="well well-sm">
+                <strong>Category Title</strong>
+                <div class="btn-group">
+                    <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                        class="glyphicon glyphicon-th"></span>Grid</a>
+                </div>
+            </div>
+            <div id="products" class="row list-group">
                 {% for obj in objects %}
-                <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="item  col-xs-4 col-lg-4">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
+                        <img class="group list-group-image" src={{obj.thumb}} alt="" />
                         <div class="caption">
-                            <h4><a href="#">{{obj.Title}}</a>
-                            </h4>
-                            <h3 class="pull-right">{{obj.ListPrice}}</h3>
-                            <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                            <h4 class="group inner list-group-item-heading">{{obj.name}}</h4>
+                            <p class="group inner list-group-item-text">{{obj.desc}}</p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">${{obj.msrp}}</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="#">Add to cart</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,11 +117,11 @@
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li><a href="?page={{pages.1}}&brand={{cur_brand}}">{{pages.1}}</a></li>
-                    <li><a href="?page={{pages.2}}&brand={{cur_brand}}">{{pages.2}}</a></li>
-                    <li><a href="?page={{pages.3}}&brand={{cur_brand}}">{{pages.3}}</a></li>
+                    <li><a href="?page={{pages.1}}&price={{cur_price}}&search={{sk}}">{{pages.1}}</a></li>
+                    <li><a href="?page={{pages.2}}&price={{cur_price}}&search={{sk}}">{{pages.2}}</a></li>
+                    <li><a href="?page={{pages.3}}&price={{cur_price}}&search={{sk}}">{{pages.3}}</a></li>
                     <li><a href="#">...</a></li>
-                    <li><a href="?page={{n_page}}&brand={{cur_brand}}">{{n_page}}</a></li>
+                    <li><a href="?page={{n_page}}&price={{cur_price}}&search={{sk}}">{{n_page}}</a></li>
                     <li>
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
@@ -142,5 +159,11 @@
 <script src="{% static 'frontend/js/bootstrap.min.js' %}"></script>
 
 </body>
+<script>
+    $(document).ready(function() {
+    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+});
+</script>
 
 </html>
