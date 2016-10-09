@@ -1,0 +1,5 @@
+*.pyc
+.idea*
+Amazon*
+elastic*
+*workspace.xml
